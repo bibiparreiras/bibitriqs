@@ -60,9 +60,16 @@ for i in range(n_loops):
 
 for j, mesh_point in enumerate(G_w.mesh): 
     omega = mesh_point.value  # Extrai o valor da frequência (ω)
-    real_part = G_w.data.real[j, 0, 0]  # Parte real
-    imag_part = G_w.data.imag[j, 0, 0]  # Parte imaginária
-    print(f"Frequência (ω): {omega:.3f}, Re[G(ω)]: {real_part:.6f}, Im[G(ω)]: {imag_part:.6f}")
+    real_part_G = G_w.data.real[j, 0, 0]  # Parte real
+    imag_part_G = G_w.data.imag[j, 0, 0]  # Parte imaginária
+
+    # Para Σ(ω)
+    real_part_Sigma = S.Sigma_iw.data.real[j, 0, 0]  # Parte real de Σ(ω)
+    imag_part_Sigma = S.Sigma_iw.data.imag[j, 0, 0]  # Parte imaginária de Σ(ω)
+
+    # Imprime as partes de G(ω) e Σ(ω)
+    print(f"Frequência (ω): {omega:.3f}, Re[G(ω)]: {real_part_G:.6f}, Im[G(ω)]: {imag_part_G:.6f}, "
+          f"Re[Σ(ω)]: {real_part_Sigma:.6f}, Im[Σ(ω)]: {imag_part_Sigma:.6f}")
 
 
 plt.legend()
